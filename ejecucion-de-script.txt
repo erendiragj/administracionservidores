@@ -1,0 +1,10 @@
+crear un script
+editor nombre-script
+otorgar permisos
+chmod 700
+ejecuta
+./nombre
+se realizara si no hay ningun problema
+
+
+nota: los alias se hacen en terminal sin  nigun problema.
