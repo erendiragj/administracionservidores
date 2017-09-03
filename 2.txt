@@ -1,0 +1,1 @@
+alias contar='ls -d */|wc -l'
