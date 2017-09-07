@@ -1,3 +1,2 @@
 !# /bin/bash
-rm -r*
-#rm *
+ mv /home/eren/hola.txt  ~/.local/share/Trash/files 
