@@ -1,2 +1,2 @@
 !# /bin/bash
-mv ~/.local/share/Trash/files /home/eren/Documentos
+mv  ~/.local/share/Trash/files/hola.txt /home/eren
