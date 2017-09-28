@@ -3,7 +3,7 @@
 #declaracion de las opciones#
 opcion=""
 #ciclo del menu: do while-mientras#
-while [ "$opcion" != "9" ] ; do 
+while [ "$opcion" != "29" ] ; do 
 echo "-------   bienvenido   ---------"
 echo "0 instalar ifconfig,iwconfig..."
 echo "1 ver redes 1era"
@@ -29,8 +29,12 @@ echo "20 ver insterfaces"
 echo "21 conectar wlan"
 echo "22 dispositivos ligados inalambricos"
 echo "23 escanear coneccion"
-
-echo "9 salir "
+echo "24 conectar a una interfaz automaticamente cableada"
+echo "25 conectar a una interfaz automaticamente inalambrica"
+echo "26 conectar de forma automatica a la cableada"
+echo "27 conectar de forma automatica a la inalambrica"
+echo "28 manual de interface, como se utiliza"
+echo "29 salir "
 echo "--------------------------------"
 #leer la opcion a ingresar#
 read opcion
@@ -148,8 +152,8 @@ case $opcion in
 	sudo iwconfig
 	;;
 	"23")
-	echo "--elige la red--"
-	echo "--escribe que coneccion eliges--"
+	echo "--elige lo que quieres hacer--"
+	echo "--escribe que red quieres escanear--"
 	echo "--1 cableada--"
 	echo "--2 inalambrico--"
 	read red
@@ -160,7 +164,32 @@ case $opcion in
 	fi
 	;;
 	"24")
-	echo "--crear rede--"
+	echo "--conectar con DHCP cableada--"
+	auto enpsl0
+	allow-hotplug enpsl0
+	inface enpsl0 inet dhcp
+	"25")
+	echo "--conectar con DHCP inalambrica--"
+	auto wlps20
+	allow-hotplug wlp2s0
+	inface wlps20 inet dhcp
+	"26")
+	echo "--levantar interfaz cableada manualmente--"
+	iface enpsl0 inet manual
+      	pre-up ifconfig enpsl0 up
+      	post-down ifconfig enpsl0 down
+	"27")
+	echo "--levantar interfaz inalambrica manualmente--"
+	iface wlp2s0 inet manual
+      	pre-up ifconfig wlp2s0 up
+      	post-down ifconfig wlp2s0 down
+	"28")
+	echo "---------- manual ---------"
+	man interfaces
+	echo "listo :D"
+	"29")
+	echo "adios, que bien que estubistes aqui, hasta la proxima..."
+	;;
 	*)
 	echo "---    la opcion no es valida   ---"
 	;;
